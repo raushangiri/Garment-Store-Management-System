@@ -17,7 +17,15 @@ export function AddProductModal({ isOpen, onClose }: AddProductModalProps) {
     stock: '',
     category: '',
     minStock: '',
-    description: ''
+    description: '',
+    size: '',
+    color: '',
+    brand: '',
+    gender: 'Unisex',
+    discountEnabled: false,
+    discountPercent: '0',
+    maxDiscountForSales: '10',
+    maxDiscountForAdmin: '20'
   });
 
   if (!isOpen) return null;
@@ -37,7 +45,15 @@ export function AddProductModal({ isOpen, onClose }: AddProductModalProps) {
       stock: parseInt(formData.stock),
       category: formData.category,
       minStock: parseInt(formData.minStock) || 10,
-      description: formData.description
+      description: formData.description,
+      size: formData.size,
+      color: formData.color,
+      brand: formData.brand,
+      gender: formData.gender,
+      discountEnabled: formData.discountEnabled,
+      discountPercent: parseFloat(formData.discountPercent) || 0,
+      maxDiscountForSales: parseFloat(formData.maxDiscountForSales) || 10,
+      maxDiscountForAdmin: parseFloat(formData.maxDiscountForAdmin) || 20
     });
 
     toast.success('Product added successfully');
@@ -48,7 +64,15 @@ export function AddProductModal({ isOpen, onClose }: AddProductModalProps) {
       stock: '',
       category: '',
       minStock: '',
-      description: ''
+      description: '',
+      size: '',
+      color: '',
+      brand: '',
+      gender: 'Unisex',
+      discountEnabled: false,
+      discountPercent: '0',
+      maxDiscountForSales: '10',
+      maxDiscountForAdmin: '20'
     });
     onClose();
   };
@@ -159,6 +183,117 @@ export function AddProductModal({ isOpen, onClose }: AddProductModalProps) {
               rows={3}
               placeholder="Enter product description"
             />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Size
+              </label>
+              <input
+                type="text"
+                value={formData.size}
+                onChange={(e) => setFormData({ ...formData, size: e.target.value })}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., S, M, L"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Color
+              </label>
+              <input
+                type="text"
+                value={formData.color}
+                onChange={(e) => setFormData({ ...formData, color: e.target.value })}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., Red, Blue"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Brand
+              </label>
+              <input
+                type="text"
+                value={formData.brand}
+                onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., Nike, Adidas"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Gender
+              </label>
+              <select
+                value={formData.gender}
+                onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'Men' | 'Women' | 'Unisex' | 'Kids' })}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="Unisex">Unisex</option>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+                <option value="Kids">Kids</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Discount Enabled
+              </label>
+              <input
+                type="checkbox"
+                checked={formData.discountEnabled}
+                onChange={(e) => setFormData({ ...formData, discountEnabled: e.target.checked })}
+                className="w-4 h-4 text-blue-500 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Discount Percent
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                value={formData.discountPercent}
+                onChange={(e) => setFormData({ ...formData, discountPercent: e.target.value })}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="0.00"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Max Discount for Sales
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                value={formData.maxDiscountForSales}
+                onChange={(e) => setFormData({ ...formData, maxDiscountForSales: e.target.value })}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="10.00"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Max Discount for Admin
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                value={formData.maxDiscountForAdmin}
+                onChange={(e) => setFormData({ ...formData, maxDiscountForAdmin: e.target.value })}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="20.00"
+              />
+            </div>
           </div>
 
           <div className="flex gap-3 pt-4">

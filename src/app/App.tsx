@@ -8,11 +8,15 @@ import { PointOfSale } from '@/app/components/PointOfSale';
 import { Reports } from '@/app/components/Reports';
 import { Settings } from '@/app/components/Settings';
 import { PurchaseOrders } from '@/app/components/PurchaseOrders';
+import { UserManagement } from '@/app/components/UserManagement';
+import { OrderHistory } from '@/app/components/OrderHistory';
 import { Sidebar } from '@/app/components/Sidebar';
 import { MobileNav } from '@/app/components/MobileNav';
 import { StoreProvider } from '@/app/context/StoreContext';
 import { AuthProvider, useAuth } from '@/app/context/AuthContext';
 import { PurchaseProvider } from '@/app/context/PurchaseContext';
+import { UserManagementProvider } from '@/app/context/UserManagementContext';
+import { DraftProvider } from '@/app/context/DraftContext';
 
 function AppContent() {
   const { user, logout } = useAuth();
@@ -63,6 +67,10 @@ function AppContent() {
         return <PointOfSale />;
       case 'purchase':
         return <PurchaseOrders />;
+      case 'orders':
+        return <OrderHistory />;
+      case 'users':
+        return <UserManagement />;
       case 'reports':
         return <Reports />;
       case 'settings':
@@ -101,11 +109,15 @@ function AppContent() {
 export default function App() {
   return (
     <AuthProvider>
-      <StoreProvider>
-        <PurchaseProvider>
-          <AppContent />
-        </PurchaseProvider>
-      </StoreProvider>
+      <UserManagementProvider>
+        <StoreProvider>
+          <DraftProvider>
+            <PurchaseProvider>
+              <AppContent />
+            </PurchaseProvider>
+          </DraftProvider>
+        </StoreProvider>
+      </UserManagementProvider>
     </AuthProvider>
   );
 }

@@ -14,6 +14,11 @@ export interface Product {
   color?: string;
   brand?: string;
   gender?: 'Men' | 'Women' | 'Unisex' | 'Kids';
+  // Discount configuration
+  discountEnabled: boolean;
+  discountPercent: number;
+  maxDiscountForSales: number; // Max discount % sales person can apply
+  maxDiscountForAdmin: number; // Max discount % admin can apply
 }
 
 export interface Sale {
@@ -67,7 +72,11 @@ const initialProducts: Product[] = [
     color: 'Navy Blue',
     brand: 'FashionHub',
     gender: 'Men',
-    description: 'Comfortable cotton t-shirt with modern fit'
+    description: 'Comfortable cotton t-shirt with modern fit',
+    discountEnabled: true,
+    discountPercent: 10,
+    maxDiscountForSales: 15,
+    maxDiscountForAdmin: 20
   },
   {
     id: '2',
@@ -81,7 +90,11 @@ const initialProducts: Product[] = [
     color: 'Dark Blue',
     brand: 'DenimCo',
     gender: 'Men',
-    description: 'Classic slim fit denim jeans'
+    description: 'Classic slim fit denim jeans',
+    discountEnabled: true,
+    discountPercent: 5,
+    maxDiscountForSales: 10,
+    maxDiscountForAdmin: 15
   },
   {
     id: '3',
@@ -95,7 +108,11 @@ const initialProducts: Product[] = [
     color: 'Floral Print',
     brand: 'StyleWear',
     gender: 'Women',
-    description: 'Beautiful floral print summer dress'
+    description: 'Beautiful floral print summer dress',
+    discountEnabled: true,
+    discountPercent: 15,
+    maxDiscountForSales: 20,
+    maxDiscountForAdmin: 25
   },
   {
     id: '4',
@@ -109,7 +126,11 @@ const initialProducts: Product[] = [
     color: 'Grey',
     brand: 'Comfort+',
     gender: 'Unisex',
-    description: 'Warm and comfortable hoodie'
+    description: 'Warm and comfortable hoodie',
+    discountEnabled: true,
+    discountPercent: 10,
+    maxDiscountForSales: 15,
+    maxDiscountForAdmin: 20
   },
   {
     id: '5',
@@ -123,7 +144,11 @@ const initialProducts: Product[] = [
     color: 'White',
     brand: 'FormalWear',
     gender: 'Men',
-    description: 'Classic formal shirt for office wear'
+    description: 'Classic formal shirt for office wear',
+    discountEnabled: true,
+    discountPercent: 5,
+    maxDiscountForSales: 10,
+    maxDiscountForAdmin: 15
   },
   {
     id: '6',
@@ -137,7 +162,11 @@ const initialProducts: Product[] = [
     color: 'Multi',
     brand: 'KidsFun',
     gender: 'Kids',
-    description: 'Comfortable cotton shorts for kids'
+    description: 'Comfortable cotton shorts for kids',
+    discountEnabled: true,
+    discountPercent: 10,
+    maxDiscountForSales: 15,
+    maxDiscountForAdmin: 20
   },
   {
     id: '7',
@@ -151,7 +180,11 @@ const initialProducts: Product[] = [
     color: 'Black',
     brand: 'ActiveWear',
     gender: 'Unisex',
-    description: 'Perfect for workouts and casual wear'
+    description: 'Perfect for workouts and casual wear',
+    discountEnabled: true,
+    discountPercent: 10,
+    maxDiscountForSales: 15,
+    maxDiscountForAdmin: 20
   },
   {
     id: '8',
@@ -165,7 +198,11 @@ const initialProducts: Product[] = [
     color: 'Maroon',
     brand: 'EthnicStyle',
     gender: 'Women',
-    description: 'Traditional designer kurta'
+    description: 'Traditional designer kurta',
+    discountEnabled: true,
+    discountPercent: 15,
+    maxDiscountForSales: 20,
+    maxDiscountForAdmin: 25
   }
 ];
 

@@ -1,4 +1,4 @@
-import { ShoppingCart, Package, BarChart3, Settings, LayoutDashboard, LogOut, User, Sparkles, ShoppingBag } from 'lucide-react';
+import { ShoppingCart, Package, BarChart3, Settings, LayoutDashboard, LogOut, User, Sparkles, ShoppingBag, Users, FileText } from 'lucide-react';
 import { useAuth, UserRole } from '@/app/context/AuthContext';
 
 interface SidebarProps {
@@ -16,6 +16,8 @@ export function Sidebar({ activeTab, setActiveTab, userRole, onLogout }: Sidebar
     { id: 'pos', label: 'Point of Sale', icon: ShoppingCart },
     { id: 'inventory', label: 'Inventory', icon: Package },
     { id: 'purchase', label: 'Purchase Orders', icon: ShoppingBag },
+    { id: 'orders', label: 'Order History', icon: FileText },
+    { id: 'users', label: 'User Management', icon: Users },
     { id: 'reports', label: 'Reports', icon: BarChart3 },
     { id: 'settings', label: 'Settings', icon: Settings },
   ];
